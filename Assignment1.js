@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Assignment 1 - first question
 
 var list = [
     { text: 'ES6 is awesome', type: 'p' },
@@ -15,3 +16,26 @@ for (item of list) {
     }
 
 }
+// Assignment 1 - Second question
+
+function calculatePrice(price,tax,discount=10){
+    taxablePrice = price - (price * (discount / 100))
+    priceWithTax =  taxablePrice + (taxablePrice * (tax / 100));
+    return priceWithTax;
+  }
+  
+  var price = calculatePrice(100,5);
+  console.log(price);
+
+// Assignment 1 - Seventh question
+
+var value = new Map();
+value.set('name','zeo');
+value.set('Age',20);
+value.set('grade','A');
+
+for( [key,value] of value.entries()){
+console.log(`${key} -> ${value}`);
+  
+}
+
