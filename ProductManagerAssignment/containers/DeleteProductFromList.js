@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as productActionCreators from "../actionCreators/product";
 let URI = "http://10.100.205.36:19000";
-class DeleteProductListWithFlatList extends Component {
+class DeleteProductFromList extends Component {
   constructor(props) {
     super(props);
   }
@@ -39,7 +39,7 @@ class DeleteProductListWithFlatList extends Component {
       'Delete product',
       'Are you sure you want to delete the product?',
       [
-        { text: 'OK', onPress: () => this._deleteProduct(id) },
+        { text: 'Yes', onPress: () => this._deleteProduct(id) },
         { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
       ],
       { cancelable: false }
@@ -78,7 +78,7 @@ class DeleteProductListWithFlatList extends Component {
         onRefresh={this._onRefresh}
         refreshing={this.props.isRefreshing}
         tintColor={"#00ff80"}
-        title={"Refreshing..."}
+        title={"Loading..."}
         titleColor={"#00ff80"}
       />
     );
