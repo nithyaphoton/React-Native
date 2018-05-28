@@ -11,7 +11,7 @@ import {
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as productActionCreators from "../actionCreators/product";
-let URI = "http://10.100.205.36:19000";
+let URI = "http://172.16.105.175:4000";
 class SearchProductListWithFlatList extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +27,7 @@ class SearchProductListWithFlatList extends Component {
     // implement above using react redux
   };
 
-  _getProducts = (page = 1, limit = 8) => {
+  _getProducts = (page = 1, limit = 10) => {
     this.props.actions.getProducts(page, limit);
   };
 
@@ -79,7 +79,7 @@ class SearchProductListWithFlatList extends Component {
     return (
       <View style={{flex:1,backgroundColor:'#fff'}}>
         {this.props.isLoading ? (
-          <ActivityIndicator size="large" color="#00ff80" />
+          <ActivityIndicator size="small" color="#00ff80" />
         ) : (
           <FlatList
             data={this.props.products}
