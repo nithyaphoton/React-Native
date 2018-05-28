@@ -11,7 +11,9 @@ import {
     SEARCH_PRODUCT,
     SEARCH_PRODUCT_FAILURE,
     SEARCH_PRODUCT_SUCCESS,
-    DELETE_PRODUCT
+    DELETE_PRODUCT,
+    DELETE_PRODUCT_SUCCESS,
+    DELETE_PRODUCT_FAILURE
 } from "../actionTypes/product";
 
 export function getProducts(page, limit) {
@@ -77,29 +79,43 @@ export function addProductFailure(error) {
         error
     }
 }
-export function searchProduct(product) {
+export function searchProductItem(product) {
     return {
         type: SEARCH_PRODUCT,
-        product
+        id
     }
 }
 
-export function searchProductSuccess(product) {
+export function searchProductItemSuccess(product) {
     return {
         type: SEARCH_PRODUCT_SUCCESS,
-        product
+        id
     }
 }
 
-export function searchProductFailure(error) {
+export function searchProductItemFailure(error) {
     return {
         type: SEARCH_PRODUCT_FAILURE,
         error
     }
 }
-export function deleteProduct(product) {
+export function deleteProductItem(product) {
     return {
         type: DELETE_PRODUCT,
-        product
+        id
+    }
+}
+
+export function deleteProductItemSuccess(id) {
+    return {
+        type: DELETE_PRODUCT_SUCCESS,
+        id        
+    }
+}
+
+export function deleteProductItemFailure(error) {
+    return {
+        type: DELETE_PRODUCT_FAILURE,
+        error
     }
 }
