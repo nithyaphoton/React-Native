@@ -37,7 +37,7 @@ class DeleteProductFromList extends Component {
   ondeleteTapped = id => {
     Alert.alert(
       'Delete product',
-      'Are you sure you want to delete the product?',
+      'Do you want to delete this product?',
       [
         { text: 'Yes', onPress: () => this._deleteProduct(id) },
         { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
