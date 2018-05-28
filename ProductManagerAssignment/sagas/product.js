@@ -4,14 +4,16 @@ import {
 } from "redux-saga/effects";
 import { Vibration } from 'react-native';
 import * as actionCreators from "../actionCreators/product"
+import * as addProductActionCreators from "../actionCreators/addNewProduct";
+import * as detailActionCreators from "../actionCreators/productItemDetail";
 import {
     GET_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, SEARCH_PRODUCT, DELETE_PRODUCT
 } from "../actionTypes/product";
 
-let URI = "http://10.100.205.36:19000";
+let URI = "http://172.16.105.175:4000";
 
 function vibrate() {
-    Vibration.vibrate(1000);
+    Vibration.vibrate(8000);
 }
 
 function* getProducts(action) {
@@ -22,6 +24,8 @@ function* getProducts(action) {
         yield put(actionCreators.getProductsFailure(error))
     }
 }
+
+//It is only to get all the items
 function* getProduct(action) {
     try {
         let product = yield fetch(`${URI}/products/${action.id}`).then(r => r.json());
@@ -57,6 +61,20 @@ function* deleteProduct(action) {
         yield put(getProductsFailure(error));
     }
 }
+
+
+function* getProductDetail(action) {
+    try {
+
+        console.log(`${URI}/products/${action.id}`, 'detail url');
+        let productDetails = yield fetch(`${URI}/products/${action.id}`).then(r => r.json());
+        yield put(detailActionCreators.getProductDetailSuccess(productDetails))
+    } catch (error) {
+        yield put(detailActionCreators.getProductDetailFailure(error))
+    }
+}
+
+
 function* addProduct(action) {
 
     try {
@@ -72,9 +90,9 @@ function* addProduct(action) {
     }
 }
 export function* productWatchers() {
-    yield [takeLatest(GET_PRODUCTS, getProducts),
-    takeLatest(GET_PRODUCT, getProduct),
-    takeLatest(ADD_PRODUCT, addProduct),
-    takeLatest(SEARCH_PRODUCT, searchProduct),
-    takeLatest(DELETE_PRODUCT, deleteProduct)]
+    yield takeLatest(GET_PRODUCTS, getProducts)
+    yield takeLatest(SEARCH_PRODUCT, searchProduct)
+    yield takeLatest(DELETE_PRODUCT, deleteProduct)
+    yield takeLatest(ADD_PRODUCT, addProduct)
+    yield takeLatest(GET_PRODUCT_DETAIL, getProductDetail)
 }
