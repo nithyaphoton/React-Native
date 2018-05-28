@@ -59,9 +59,35 @@ const AddStack = createStackNavigator(
     }
   }
 );
+
+const SearchProduct = createStackNavigator(
+  {
+    SearchList: {
+      screen: Search
+    },
+    Detail: {
+      screen: ProductDetail
+    }
+  },
+  {
+    initialRouteName: "SearchList",
+    navigationOptions: {
+      title: "Search",
+      headerStyle: {
+        backgroundColor: "#00ff80"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+        textAlign: "center"
+      }
+    }
+  }
+);
+
 const DeleteStack = createStackNavigator(
   {
-    DeleteList: {
+    DeleteFlatList: {
       screen: ProductListWithFlatList
     },
     Detail: {
@@ -69,7 +95,7 @@ const DeleteStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: "DeleteList",
+    initialRouteName: "DeleteFlatList",
     navigationOptions: {
       title: "Admin",
       headerStyle: {
@@ -84,30 +110,6 @@ const DeleteStack = createStackNavigator(
   }
 );
 
-const SearchProduct = createStackNavigator(
-  {
-    Search: {
-      screen: Search
-    },
-    Detail: {
-      screen: ProductDetail
-    }
-  },
-  {
-    initialRouteName: "Search",
-    navigationOptions: {
-      title: "Search",
-      headerStyle: {
-        backgroundColor: "#00ff80"
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-        textAlign: "center"
-      }
-    }
-  }
-);
 export const AppNavigator = createBottomTabNavigator(
   {
     List: ListStack,
