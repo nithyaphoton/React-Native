@@ -7,7 +7,7 @@ import {
     GET_PRODUCTS_FROM_SEARCH
 } from "../actionTypes/SearchItem";
 
-let URI = "http://172.16.105.165:4000";
+let URI = "http://172.16.105.175:4000";
 
 function* getProductsFromSearch(action) {
     try {
